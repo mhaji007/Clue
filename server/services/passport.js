@@ -5,6 +5,10 @@ const keys = require('../config/keys');
 
 const User = mongoose.model('users');
 
+passport.serializeUser((user,done)=>{
+    done(null, user.id);
+});
+
 // Tells passport a new strategy is available
 // instantiates the new strategy and tells it how to use it
 passport.use(
