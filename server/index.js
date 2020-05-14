@@ -15,7 +15,7 @@ mongoose.connect(keys.mongoURI, {
 
 const app = express();
 
-// Tells express to make use of cookies
+// Enable cookies
 app.use(
     //  configuration object
     cookieSession({
@@ -24,6 +24,7 @@ app.use(
     })
 );
 
+//Tells express to make use of cookies
 app.use(passport.initialize());
 app.use(passport.session());
 
