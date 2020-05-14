@@ -46,3 +46,12 @@ passport.use(
         }
     )
 );
+
+
+// 6WDTH4V6dTJqFyvM
+
+//mongodb+srv://mhaji007prod:<password>@cluster0-1pzrn.mongodb.net/test?retryWrites=true&w=majority
+
+// CLient ID: 59091517968-0q9okco7mtldhff7jgmasai722epl553.apps.googleusercontent.com
+
+//Client Secret: rtlKwKc9Pb_7VpBX7IZpGdv7
