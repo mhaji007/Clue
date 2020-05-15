@@ -11,7 +11,7 @@ import reducers from './reducers';
 // first argument -> root reducer
 // second argument -> Store seed (important for server side rendering)
 // third argument -> middlewares
-const store = createStore(reducers, {}, applyMiddleware())
+const store = createStore(reducers, {}, applyMiddleware(reduxThunk))
 
 ReactDOM.render(
 <Provider store={store}>
