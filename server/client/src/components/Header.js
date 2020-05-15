@@ -6,7 +6,7 @@ class Header extends Component {
         return ( 
         <nav class="blue"> 
             <div className="nav-wrapper">
-                <a className = "left brand-logo">
+                <a className = "left brand-logo" style={{marginLeft:"20px"}}>
                     Clue
                 </a>
                 <ul className="right">
