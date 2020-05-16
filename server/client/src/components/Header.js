@@ -1,5 +1,8 @@
 import React, {Component} from 'react';
 import {connect} from 'react-redux';
+import Logo from '../Logo.PNG';
+import './Header.css';
+import {Link} from 'react-router-dom';
 
 
 class Header extends Component {
@@ -10,7 +13,7 @@ class Header extends Component {
                 return;
             case false:
                 return (
-                    <li>
+                    <li className="login">
                         <a href="/auth/google">Login With Google</a>
                     </li>
                 )
@@ -23,11 +26,13 @@ class Header extends Component {
     render() { 
         console.log(this.props);
         return ( 
-        <nav className="blue"> 
-            <div className="nav-wrapper">
-                <a className = "left brand-logo" style={{marginLeft:"20px"}}>
-                    Clue
-                </a>
+        <nav> 
+            <div className="nav-wrapper blue">
+                <Link to={this.props.auth ? '/surveys': '/'}
+                
+                className = "left brand-logo">
+                    <img src={Logo} alt="clue logo"/>
+                </Link>
                 <ul className="right">
                     {this.renderContent()}
                 </ul>
