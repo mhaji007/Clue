@@ -4,7 +4,7 @@ class Header extends Component {
 
     render() { 
         return ( 
-        <nav class="blue"> 
+        <nav className="blue"> 
             <div className="nav-wrapper">
                 <a className = "left brand-logo" style={{marginLeft:"20px"}}>
                     Clue
