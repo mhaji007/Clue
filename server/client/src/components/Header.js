@@ -15,14 +15,16 @@ class Header extends Component {
             case false:
                 return (
                     <li className="login">
-                        <a href="/auth/google">Login With Google</a>
+                        <a className="btn red" href="/auth/google"><i className="material-icons right"> exit_to_app </i>Login With Google</a>
                     </li>
                 )
                 
             default:
                 return <Fragment>
-               <li> <Payments/> </li>,
-               <li ><a className="btn red" href="/api/logout"> <i className="material-icons right"> exit_to_app </i> Logout</a> </li>
+                    <li> <Payments/> </li>,
+                    <li >
+                    <a className="btn red" href="/api/logout"> <i className="material-icons right"> exit_to_app </i> Logout</a>
+                    </li>
                 </Fragment>;
         }
     }
