@@ -17,7 +17,7 @@ class Payments extends Component {
             stripeKey={process.env.REACT_APP_STRIPE_KEY}
             >
             <a className="btn purple darken-4">
-                <i className="material-icons left"> payment </i>
+                <i className="material-icons left"> attach_money </i>
                 ADD CREDITS
             </a>
             </StripeCheckout>

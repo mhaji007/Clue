@@ -23,6 +23,9 @@ class Header extends Component {
                 return <Fragment>
                     <li> <Payments/> </li>,
                     <li >
+                   <a className="btn green" href="#"> <i className="material-icons left"> payment </i> Credits: {this.props.auth.credits}</a>
+                    </li>
+                    <li >
                     <a className="btn red" href="/api/logout"> <i className="material-icons right"> exit_to_app </i> Logout</a>
                     </li>
                 </Fragment>;
