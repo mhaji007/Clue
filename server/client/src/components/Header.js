@@ -1,4 +1,4 @@
-import React, {Component} from 'react';
+import React, {Component, Fragment} from 'react';
 import {connect} from 'react-redux';
 import Logo from '../Logo.PNG';
 import './Header.css';
@@ -20,10 +20,10 @@ class Header extends Component {
                 )
                 
             default:
-                return [
+                return <Fragment>
                <li> <Payments/> </li>,
-               <li><a href="/api/logout"> Logout</a> </li>
-                ];
+               <li ><a className="btn red" href="/api/logout"> <i className="material-icons right"> exit_to_app </i> Logout</a> </li>
+                </Fragment>;
         }
     }
 
