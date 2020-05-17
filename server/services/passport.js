@@ -32,6 +32,9 @@ passport.use(
         callbackURL:'/auth/google/callback',
         proxy: true
         },
+        // Once google authenticates and exchange of code wtih profile
+        // takes place and we are sent back to server,
+        // at callback url we have access to user profile
         async (accessToken, refreshToken, profile, done) => {
             // create a user record in database
             const existingUser = await User.findOne({googleId: profile.id});
