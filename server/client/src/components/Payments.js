@@ -1,14 +1,16 @@
 import React, {Component} from 'react'
 import StripeCheckout from 'react-stripe-checkout';
 import {connect} from 'react-redux';
-import * as actions from '../actions'
+import * as actions from '../actions';
+import cart from '../cart.PNG';
 
 class Payments extends Component {
     
     render() { 
-        return ( 
+        return (
             <StripeCheckout
             name="Clue"
+            image={cart}
             description="$5 for 5 email credits"
             amount={500}
             token={token=>this.props.handleToken(token)}
