@@ -19,7 +19,7 @@ class Mailer extends helper.Mail {
         this.body = new helper.Content('text/html', content);
 
         // Provided by base class - Turn each recipient into a helper email
-        this.recipients = this.formatAddresses(recipient); 
+        this.recipients = this.formatAddresses(recipients); 
         
         // Provided by base class - Register the body with Email
         this.addContent(this.body);
@@ -45,7 +45,7 @@ class Mailer extends helper.Mail {
     }
 
     addRecipients() {
-        const personalize = new helper.personalization();
+        const personalize = new helper.Personalization();
 
         this.recipients.forEach(recipient => {
             personalize.addTo(recipient);
@@ -64,7 +64,7 @@ class Mailer extends helper.Mail {
             
         })
     }
-    
+
     async send() {
         const request = this.sgApi.emptyRequest({
             method: 'POST',
