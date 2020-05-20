@@ -21,7 +21,7 @@ class Header extends Component {
                 
             default:
                 return <Fragment>
-                    <li> <Payments/> </li>,
+                    <li> <Payments/> </li>
                     <li >
                    <a className="btn green" href="#"> <i className="material-icons left"> payment </i> Credits: {this.props.auth.credits}</a>
                     </li>
@@ -36,10 +36,10 @@ class Header extends Component {
         console.log(this.props);
         return ( 
         <nav> 
-            <div className="nav-wrapper  black">
+            <div className="nav-wrapper black">
                 <Link to={this.props.auth ? '/surveys': '/'}
                 
-                className = "left brand-logo">
+                className = "left brand-logo navbar-fixed hide-on-med-and-down">
                     <img src={Logo} alt="clue logo"/>
                 </Link>
                 <ul className="right">
