@@ -14,15 +14,21 @@ class Mailer extends helper.Mail {
         this.from_email = new helper.Email('mhaji007@fiu.edu');
         this.subject = subject;
         this.body = new helper.Content('text/html', content);
+        // Trun each recipient into a helper email
         this.recipients = this.formatAddresses(recipient); 
         
         // Register the body with Email
         this.addContent(this.body);
-     // Enable Sendgrid scanning function that
-    // replaces every link with their own special link
+        // Enable Sendgrid scanning function that
+        // replaces every link with their own special link
         this.addClickTracking();
+        // take the list of helper emails and 
+        // register them with email
+        this.addRecipients();
 
     }
+
+
 
     addClickTracking(){
         const trackingSettings = new helper.TrackingSettings();
@@ -30,6 +36,17 @@ class Mailer extends helper.Mail {
 
         trackingSettings.setClickTracking(clickTracking);
         this.addTrackingSettings(trackingSettings);
+    }
+
+    addRecipients() {
+        const personalize = new helper.personalization();
+
+        this.recipients.forEach(recipient => {
+            personalize.addTo(recipient);
+            
+        });
+
+        this.addPersonalization(personalize);
     }
 
     // Extract each email for every recipient 
