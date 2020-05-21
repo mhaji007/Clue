@@ -3,33 +3,25 @@ import React, {Component} from 'react';
 // provided by redux-from to render
 // any type of traditional html element
 import {reduxForm, Field} from 'redux-form';
+import SurveyField from './SurveyField';
 
 // SurveyForm shows a form for a user to add input
 class SurveyForm extends Component {
-    state = {  }
+    
+    renderFields() {
+        return (
+            <div>
+                <Field type="text" name="title" component={SurveyField}/>
+            </div>
+        );
+    }
+
     render() { 
         return (
         <div>
             <form
-            onSubmit= {this.props.handleSubmit(values=>console.log(values))}>
-            <Field
-            // type of input
-            type="text"
-            // Tells redux from 
-            // we have one piece of
-            // data produce by our form
-            // called surveyTitle
-            // Once we start typing
-            // into the input
-            // redux from takes that value
-            // out of that input and stores it in
-            // redux store under a key
-            // of surveyTitle
-            name="surveyTitle"
-            // Tells the field to
-            // appear as the input form
-            component="input"
-            />
+            onSubmit= {this.props.handleSubmit(values=> console.log(values))}>
+                {this.renderFields()}
             <button type="submit">Submit</button>
             </form>
         </div> 
