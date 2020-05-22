@@ -9,11 +9,12 @@ import SurveyField from './SurveyField';
 
 
 const FIELDS = [
-    {label:'Survey Title', name:'title'},
-    {label:'Subject Line', name:'subject'},
-    {label:'Email Body', name:'body'},
-    {label:'Recipient List', name:'emails'},
-];
+    { label: 'Survey Title', name: 'title', required: true },
+    { label: 'Subject Line', name: 'subject', required: true },
+    { label: 'Email Body', name: 'body', required: true },
+    { label: 'Recipient List', name: 'emails', required: true },
+   ];
+    
 
 // SurveyForm shows a form for a user to add input
 class SurveyForm extends Component {
@@ -32,11 +33,11 @@ class SurveyForm extends Component {
             <form style={{marginTop:"20px"}}
             onSubmit= {this.props.handleSubmit(values=> console.log(values))}>
                 {this.renderFields()}
-            <Link to="/surveys" className="red btn-flat white-text">
-            <i className="material-icons right" style={{marginLeft:"4px", paddingTop:"1px"}}> cancel </i>
+            <Link to="/surveys" className="red btn-flat white-text" style={{borderRadius: 15}}>
+            <i className="material-icons right" style={{paddingLeft:"0px", paddingTop:"1px"}}> cancel </i>
                 Cancel
             </Link>
-            <button type="submit" className="blue-grey btn-flat right white-text"><i style={{marginLeft:"4px", paddingTop:"1px"}} className="material-icons right">navigate_next</i>Next</button>
+            <button style={{borderRadius: 15}} type="submit" className="grey darken-3 btn-flat right white-text"><i style={{ paddingTop:"1px"}} className="material-icons right">navigate_next</i>Next</button>
             </form>
         </div> 
          );
@@ -45,16 +46,15 @@ class SurveyForm extends Component {
 
 // values is the object containing all the values from
 // the form
-function validate(values) {
-    const errors ={};
-
-    if (!values.title) {
-        errors.title = 'You must provide a title';
-    }
-
-
+const validate = values => {
+    const errors = {};
+    FIELDS.forEach(({ name, label, required }) => {
+        if (required && !values[name]) {
+            errors[name] = `You must provide ${label}`;
+        }
+    });
     return errors;
-}
+};
 
 export default reduxForm({
     validate,
