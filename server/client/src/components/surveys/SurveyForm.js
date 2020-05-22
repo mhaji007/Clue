@@ -39,7 +39,7 @@ class SurveyForm extends Component {
             <i className="material-icons right" style={{paddingLeft:"0px", paddingTop:"1px"}}> cancel </i>
                 Cancel
             </Link>
-            <button style={{borderRadius: 3}} type="submit" className="black btn-flat right white-text"><i style={{ paddingTop:"1px"}} className="material-icons right">navigate_next</i>Next</button>
+            <button style={{borderRadius: 3}} type="submit" className="black btn-flat right white-text">Next<i style={{ paddingTop:"1px"}} className="material-icons right">navigate_next</i></button>
             </form>
         </div> 
          );
