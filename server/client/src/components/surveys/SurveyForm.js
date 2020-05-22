@@ -4,6 +4,7 @@ import React, {Component} from 'react';
 // provided by redux-from to render
 // any type of traditional html element
 import {reduxForm, Field} from 'redux-form';
+import {Link} from 'react-router-dom';
 import SurveyField from './SurveyField';
 
 
@@ -27,11 +28,15 @@ class SurveyForm extends Component {
 
     render() { 
         return (
-        <div>
-            <form
+        <div >
+            <form style={{marginTop:"20px"}}
             onSubmit= {this.props.handleSubmit(values=> console.log(values))}>
                 {this.renderFields()}
-            <button type="submit">Submit</button>
+            <Link to="/surveys" className="red btn-flat white-text">
+            <i className="material-icons right" style={{marginLeft:"4px", paddingTop:"1px"}}> cancel </i>
+                Cancel
+            </Link>
+            <button type="submit" className="blue-grey btn-flat right white-text"><i style={{marginLeft:"4px", paddingTop:"1px"}} className="material-icons right">navigate_next</i>Next</button>
             </form>
         </div> 
          );
