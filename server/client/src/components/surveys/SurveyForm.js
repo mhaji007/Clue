@@ -1,3 +1,4 @@
+import _ from 'lodash';
 import React, {Component} from 'react';
 // Field compoent is a helper
 // provided by redux-from to render
@@ -5,21 +6,23 @@ import React, {Component} from 'react';
 import {reduxForm, Field} from 'redux-form';
 import SurveyField from './SurveyField';
 
+
+const FIELDS = [
+    {label:'Survey Title', name:'title'},
+    {label:'Subject Line', name:'subject'},
+    {label:'Email Body', name:'body'},
+    {label:'Recipient List', name:'emails'},
+];
+
 // SurveyForm shows a form for a user to add input
 class SurveyForm extends Component {
     
     renderFields() {
-        return (
-            <div>
-                <Field label="Survey Title" type="text" name="title" component={SurveyField}/>
+        return _.map(FIELDS, ({label, name}) => {
+            return (<Field key={name} component={SurveyField} type="text" label={label} name={name}/>
         
-                <Field label="Subject Line" type="text" name="Subject" component={SurveyField}/>
-           
-                <Field label="Email Body" type="text" name="body" component={SurveyField}/>
-           
-                <Field label="Recipient List" type="text" name="emails" component={SurveyField}/>
-            </div>
         );
+        });
     }
 
     render() { 
