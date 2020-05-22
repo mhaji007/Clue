@@ -1,3 +1,5 @@
+// SurveyForm shows a form for a user to add input
+
 import _ from 'lodash';
 import React, {Component} from 'react';
 // Field compoent is a helper
@@ -18,7 +20,6 @@ const FIELDS = [
    ];
     
 
-// SurveyForm shows a form for a user to add input
 class SurveyForm extends Component {
     
     renderFields() {
@@ -63,5 +64,6 @@ const validate = values => {
 
 export default reduxForm({
     validate,
-    form: 'surveyForm'
+    form: 'surveyForm', // tells redux form how to namespace all the values for this prticular form inside the form reducer
+    destroyOnUnmount:false
 })(SurveyForm);
