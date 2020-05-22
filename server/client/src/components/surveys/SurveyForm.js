@@ -6,6 +6,7 @@ import React, {Component} from 'react';
 import {reduxForm, Field} from 'redux-form';
 import {Link} from 'react-router-dom';
 import SurveyField from './SurveyField';
+import validateEmails from '../../utils/validateEmails';
 
 
 const FIELDS = [
@@ -33,11 +34,11 @@ class SurveyForm extends Component {
             <form style={{marginTop:"20px"}}
             onSubmit= {this.props.handleSubmit(values=> console.log(values))}>
                 {this.renderFields()}
-            <Link to="/surveys" className="red btn-flat white-text" style={{borderRadius: 15}}>
+            <Link to="/surveys" className="red btn-flat white-text" style={{borderRadius: 3}}>
             <i className="material-icons right" style={{paddingLeft:"0px", paddingTop:"1px"}}> cancel </i>
                 Cancel
             </Link>
-            <button style={{borderRadius: 15}} type="submit" className="grey darken-3 btn-flat right white-text"><i style={{ paddingTop:"1px"}} className="material-icons right">navigate_next</i>Next</button>
+            <button style={{borderRadius: 3}} type="submit" className="grey darken-3 btn-flat right white-text"><i style={{ paddingTop:"1px"}} className="material-icons right">navigate_next</i>Next</button>
             </form>
         </div> 
          );
@@ -48,11 +49,14 @@ class SurveyForm extends Component {
 // the form
 const validate = values => {
     const errors = {};
+    errors.emails = validateEmails(values.emails||'');
     FIELDS.forEach(({ name, label, required }) => {
         if (required && !values[name]) {
             errors[name] = `You must provide ${label}`;
         }
     });
+
+
     return errors;
 };
 

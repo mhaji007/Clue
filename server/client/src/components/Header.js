@@ -14,8 +14,8 @@ class Header extends Component {
                 return;
             case false:
                 return (
-                    <li className="login">
-                        <a className="btn red" href="/auth/google"><i className="material-icons right"> exit_to_app </i>Login With Google</a>
+                    <li className="login" >
+                        <a  className="btn red" href="/auth/google"><i  className="material-icons right"> exit_to_app </i>Login With Google</a>
                     </li>
                 )
                 
@@ -23,7 +23,7 @@ class Header extends Component {
                 return <Fragment>
                     <li> <Payments/> </li>
                     <li >
-                   <a className="btn grey darken-3" href="#"> <i className="material-icons left"> payment </i> Credits: {this.props.auth.credits}</a>
+                   <a className="btn grey darken-3" href="#" > <i className="material-icons left"> payment </i> Credits: {this.props.auth.credits}</a>
                     </li>
                     <li >
                     <a className="btn red" href="/api/logout"> <i className="material-icons right"> exit_to_app </i> Logout</a>
