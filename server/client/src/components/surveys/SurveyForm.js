@@ -9,6 +9,7 @@ import SurveyField from './SurveyField';
 import validateEmails from '../../utils/validateEmails';
 
 
+
 const FIELDS = [
     { label: 'Survey Title', name: 'title', required: true },
     { label: 'Subject Line', name: 'subject', required: true },
@@ -32,13 +33,13 @@ class SurveyForm extends Component {
         return (
         <div >
             <form style={{marginTop:"20px"}}
-            onSubmit= {this.props.handleSubmit(values=> console.log(values))}>
+            onSubmit= {this.props.handleSubmit(this.props.onSurveySubmit)}>
                 {this.renderFields()}
             <Link to="/surveys" className="red btn-flat white-text" style={{borderRadius: 3}}>
             <i className="material-icons right" style={{paddingLeft:"0px", paddingTop:"1px"}}> cancel </i>
                 Cancel
             </Link>
-            <button style={{borderRadius: 3}} type="submit" className="grey darken-3 btn-flat right white-text"><i style={{ paddingTop:"1px"}} className="material-icons right">navigate_next</i>Next</button>
+            <button style={{borderRadius: 3}} type="submit" className="black btn-flat right white-text"><i style={{ paddingTop:"1px"}} className="material-icons right">navigate_next</i>Next</button>
             </form>
         </div> 
          );
