@@ -2,7 +2,7 @@
 
 import _ from 'lodash';
 import React, {Component} from 'react';
-// Field compoent is a helper
+// Field component is a helper
 // provided by redux-from to render
 // any type of traditional html element
 import {reduxForm, Field} from 'redux-form';
