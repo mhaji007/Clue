@@ -28,6 +28,8 @@ class SurveyNew extends Component {
          );
     }
 }
+
+// Allows for dumping of values on cancel if navigated away from survey new
  
 export default reduxForm({
 
