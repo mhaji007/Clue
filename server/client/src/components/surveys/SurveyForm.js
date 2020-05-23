@@ -57,5 +57,5 @@ const validate = values => {
 export default reduxForm({
     validate,
     form: 'surveyForm', // tells redux form how to namespace all the values for this prticular form inside the form reducer
-    destroyOnUnmount:false
+    destroyOnUnmount:false // if the component is umnounted, do not clear out the values
 })(SurveyForm);
