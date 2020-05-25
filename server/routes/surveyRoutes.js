@@ -5,7 +5,9 @@ const mongoose = require('mongoose');
 const requireLogin = require('../middlewares/requireLogin');
 const requireCredits = require('../middlewares/requireCredits');
 const Mailer = require('../services/Mailer');
-const surveyTemplate = require('../services/emailTemplates/surveyTemplate')
+const surveyTemplate = require('../services/emailTemplates/surveyTemplate');
+
+
 
 const Survey = mongoose.model('surveys');
 
@@ -17,16 +19,23 @@ module.exports = app => {
     });
     
     app.post('/api/surveys/webhooks', (req, res) => {
-        const events = _.map(req.body, ({email, url}) => {
-            const pathname = new URL(url).pathname;
-            const p = new Path('/api/surveys/:surveyId/:choice');
-            const match = p.test(pathname);
-            if(match) {
-                return {email, surveyId: match.surveyId, choice: match.choice};
+        const p = new Path('/api/surveys/:surveyId/:choice');
+        
+        const events = _.chain((req.body))
+        .map(({email, url}) => {
+                const match = p.test(new URL(url).pathname)
+                if(match) {
+                    return {email, surveyId: match.surveyId, choice: match.choice};
 
-            }
-        });
+                }
+            })
+            .compact()
+            .uniqBy('email', 'surveyId')
+            .value(); 
+        
         console.log(events);
+
+        res.send({});
     });
     
     app.post('/api/surveys', requireLogin, requireCredits, async (req, res) => {
