@@ -19,7 +19,7 @@ module.exports = app => {
     });
     
     app.post('/api/surveys/webhooks', (req, res) => {
-        const p = new Path('/api/surveys/:surveyId/:choice');
+        const p = Path.createPath('/api/surveys/:surveyId/:choice');
         
     _.chain((req.body))
         .map(({email, url}) => {
@@ -40,7 +40,7 @@ module.exports = app => {
                 // loading it into the express server
 
                 Survey.updateOne({
-                    id:surveyId,
+                    _id:surveyId,
                     recipients: {
                         $elemMatch: {email: email, responded: false}
                     }
