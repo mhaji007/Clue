@@ -16,7 +16,13 @@ const Survey = mongoose.model('surveys');
 module.exports = app => {
 
     app.get('/api/surveys', requireLogin, async (req, res) => {
-       const surveys = await Survey.find({_user: req.user.id});
+        // select statement whitelists the model
+        // field and specifies to Mongo
+        // that it should not return the list
+        // of recipients
+       const surveys = await Survey.find({_user: req.user.id})
+        .select({recipients:false
+        });
 
        res.send(surveys);
     });
