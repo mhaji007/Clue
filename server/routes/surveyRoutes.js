@@ -21,7 +21,7 @@ module.exports = app => {
     app.post('/api/surveys/webhooks', (req, res) => {
         const p = new Path('/api/surveys/:surveyId/:choice');
         
-        const events = _.chain((req.body))
+    _.chain((req.body))
         .map(({email, url}) => {
                 const match = p.test(new URL(url).pathname)
                 if(match) {
@@ -31,9 +31,35 @@ module.exports = app => {
             })
             .compact()
             .uniqBy('email', 'surveyId')
+            .each(({surveyId, email, choice}) => {
+
+                // Go into the entire collection and find the survey
+                // go through all the different subdocuments and 
+                // find the one that matches the criterion
+                // then update that inside Mongo DB withoout
+                // loading it into the express server
+
+                Survey.updateOne({
+                    id:surveyId,
+                    recipients: {
+                        $elemMatch: {email: email, responded: false}
+                    }
+                }, {
+                    
+                    // using key $inc operator 
+                    // and interpolation find 
+                    // the value of choice and add one to it
+                    $inc: {[choice]: 1}, 
+
+                    // look at the recipients sub documents
+                    // and find the appropriate recipients
+                    // that was found in the original query
+                    // above and update the responded to true
+                    $set : {'recipients.$.responded': true}
+                }).exec();
+
+            })
             .value(); 
-        
-        console.log(events);
 
         res.send({});
     });
