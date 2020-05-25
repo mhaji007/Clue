@@ -14,7 +14,7 @@ const Survey = mongoose.model('surveys');
 
 
 module.exports = app => {
-    app.get('/api/surveys/thanks', (req, res) => {
+    app.get('/api/surveys/:surveyId/:choice', (req, res) => {
         res.send('Thanks for voting!');
     });
     
@@ -55,7 +55,9 @@ module.exports = app => {
                     // and find the appropriate recipients
                     // that was found in the original query
                     // above and update the responded to true
-                    $set : {'recipients.$.responded': true}
+                    $set : {'recipients.$.responded': true},
+                    lastResponded: new Date()
+
                 }).exec();
 
             })
