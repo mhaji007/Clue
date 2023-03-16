@@ -24,7 +24,7 @@
     "express": "^4.17.1",
     "lodash": "^4.17.15",
     "mongoose": "^5.9.13",
-    "passport": "^0.4.1",
+    "passport": "^0.6.0",
     "passport-google-oauth20": "^2.0.0",
     "path-parser": "^2.0.2",
     "sendgrid": "^5.2.3",
